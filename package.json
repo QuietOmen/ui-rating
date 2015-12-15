@@ -1,0 +1,63 @@
+{
+  "name": "ui-rating",
+  "version": "0.0.1",
+  "description": "A collection of star ratings and other ui elements related to ratings and reviews",
+  "main": "./dist/ui.rating.js",
+  "scripts": {
+    "build:examples": "babel-node examples/build.js",
+    "build:umd": "webpack src/index.js dist/uiRating.js --config webpackDevelopment.js",
+    "build:umd:min": "webpack src/index.js dist/uiRating.min.js --config webpackProduction.js",
+    "watch": "npm run build:umd -- --watch",
+    "build": "npm run build:umd && npm run build:umd:min",
+    "check": "npm run lint && npm run test",
+    "clean": "rimraf lib dist coverage",
+    "lint": "eslint src test examples",
+    "preversion": "npm run clean && npm run check",
+    "postversion": "git push && git push --tags && npm run clean",
+    "prepublish": "npm run clean && npm run build",
+    "test": "mocha --compilers js:babel/register --recursive",
+    "test:examples": "babel-node examples/test.js",
+    "test:watch": "npm test -- --watch",
+    "test:cov": "babel-node $(npm bin)/isparta cover $(npm bin)/_mocha -- --recursive",
+    "version": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuietOmen/ui-rating.git"
+  },
+  "keywords": [
+    "ui",
+    "react",
+    "rating",
+    "star",
+    "ui-rating"
+
+  ],
+  "author": "Bryce Hayden <bryce.c.hayden@gmail.com> (http://github.com/QuietOment)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/QuietOmen/ui-rating/issues"
+  },
+  "homepage": "https://github.com/QuietOmen/ui-rating#readme",
+  "peerDependencies": {},
+  "devDependencies": {
+    "babel": "^5.5.8",
+    "babel-core": "^5.8.24",
+    "babel-eslint": "^4.1.2",
+    "babel-loader": "^5.1.4",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "1.0.0",
+    "eslint-plugin-react": "^3.9.0",
+    "mocha": "^2.2.5",
+    "webpack": "^1.12.0"
+  },
+  "npmName": "ui-rating",
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": [
+        "*.js"
+      ]
+    }
+  ]
+}
