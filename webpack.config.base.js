@@ -6,10 +6,10 @@ var autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
-    UIElements: './src/index.js'
+    UIRating: './src/index.js'
   },
   output: {
-    library: 'UIElements',
+    library: 'UIRating',
     libraryTarget: 'umd'
   },
   resolve: {
@@ -29,7 +29,7 @@ module.exports = {
           presets: ['react', 'es2015', 'stage-0']
         },
         include: path.resolve(__dirname, 'src/'),
-        exclude: /(node_modules|bower_componenets)/
+        exclude: /(node_modules)/
       },
       {
         test: /\.png|\.gif|\.jpe?g$/,
@@ -47,7 +47,7 @@ module.exports = {
         test: /\.scss$/,
         loader: 'style-loader!css-loader!postcss-loader!sass-loader?outputStyle=compressed',
         include: path.resolve(__dirname, "./src"),
-        exclude: /(node_modules|bower_componenets)/
+        exclude: /(node_modules)/
       }
     ]
   },
