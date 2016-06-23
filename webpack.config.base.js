@@ -1,5 +1,8 @@
-var webpack = require('webpack'),
-    path = require("path");
+'use strict';
+
+var webpack = require('webpack');
+var path = require('path');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
@@ -10,6 +13,7 @@ module.exports = {
     libraryTarget: 'umd'
   },
   resolve: {
+    root: path.resolve(__dirname, './src'),
     modulesDirectories: [path.join(__dirname, 'node_modules')],
     extensions: ["", ".js", ".jsx", ".scss"]
   },
@@ -18,12 +22,17 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          plugins: ['transform-decorators-legacy'],
+          presets: ['react', 'es2015', 'stage-0']
+        },
         include: path.resolve(__dirname, 'src/'),
         exclude: /(node_modules|bower_componenets)/
       },
       {
-        test: /\.svg|\.png|\.gif|\.jpe?g$/,
+        test: /\.png|\.gif|\.jpe?g$/,
         loader: 'url-loader?limit=10000'
       },
       {
@@ -36,16 +45,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: [
-          'style',
-          'css',
-          'autoprefixer?browsers=last 2 version',
-          'sass?outputStyle=compressed'
-        ],
+        loader: 'style-loader!css-loader!postcss-loader!sass-loader?outputStyle=compressed',
         include: path.resolve(__dirname, "./src"),
         exclude: /(node_modules|bower_componenets)/
       }
     ]
   },
-  externals: ['react', 'radium']
+  externals: ['react']
 };

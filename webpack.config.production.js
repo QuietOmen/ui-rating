@@ -1,6 +1,7 @@
+'use strict';
 
 var webpack = require('webpack');
-var config = require('./webpackBase');
+var config = require('./webpack.config.base');
 
 config.plugins.push(new webpack.NoErrorsPlugin());
 config.plugins.push(new webpack.optimize.DedupePlugin());

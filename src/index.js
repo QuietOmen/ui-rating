@@ -1,4 +1,5 @@
-import StarRating from './components/star-rating/';
+import StarRating from './components/';
+
 export {
-  StarRating
+  StarRating,
 };

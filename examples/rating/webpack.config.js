@@ -22,6 +22,11 @@ var config = {
       {
         test: /\.js$/,
         loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          plugins: ['transform-decorators-legacy'],
+          presets: ['react', 'es2015', 'stage-0']
+        },
         exclude: [nodeModulesPath]
       },
       {
