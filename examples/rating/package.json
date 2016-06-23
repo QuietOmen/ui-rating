@@ -1,16 +1,16 @@
 {
-  "name": "ui-elements-rating-example",
-  "version": "0.0.0",
+  "name": "ui-rating-basic-example",
+  "version": "1.0.0",
   "description": "An example showing the various rating components",
   "scripts": {
     "start": "node server.js"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/QuietOmen/ui-elements/issues"
+    "url": "https://github.com/QuietOmen/ui-rating/issues"
   },
   "dependencies": {
-    "ui-elements": "^1.0.0"
+    "ui-rating": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.9.0",

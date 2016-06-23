@@ -1,12 +1,12 @@
 {
   "name": "ui-rating",
   "version": "1.0.0",
-  "description": "A collection of star ratings and other ui elements related to ratings and reviews",
+  "description": "A collection of star ratings and other rating elements",
   "main": "./dist/ui.rating.js",
   "scripts": {
-    "build:examples": "babel-node examples/build.js",
-    "build:umd": "webpack src/index.js dist/uiRating.js --config webpack.config.development.js",
-    "build:umd:min": "webpack src/index.js dist/uiRating.min.js --config webpack.config.production.js",
+    "build:examples": "babel-node --presets es2015 examples/build.js",
+    "build:umd": "webpack src/index.js dist/ui.rating.js --config webpack.config.development.js",
+    "build:umd:min": "webpack src/index.js dist/ui.rating.min.js --config webpack.config.production.js",
     "watch": "npm run build:umd -- --watch",
     "build": "npm run build:umd && npm run build:umd:min",
     "check": "npm run lint && npm run test",
@@ -16,7 +16,7 @@
     "postversion": "git push && git push --tags && npm run clean",
     "prepublish": "npm run clean && npm run build",
     "test": "mocha --compilers js:babel/register --recursive",
-    "test:examples": "babel-node examples/test.js",
+    "test:examples": "babel-node examples/tests.js",
     "test:watch": "npm test -- --watch",
     "test:cov": "babel-node $(npm bin)/isparta cover $(npm bin)/_mocha -- --recursive",
     "version": "npm run build"

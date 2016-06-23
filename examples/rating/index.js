@@ -1,8 +1,8 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import {StarRating} from 'ui-elements';
-import {StarRating} from '../../dist/ui.elements.js';
+// import {StarRating} from 'ui-rating';
+import {StarRating} from '../../dist/ui.rating.js';
 
 class Root extends React.Component {
 
