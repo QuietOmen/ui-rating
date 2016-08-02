@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { RenderIcon } from './render-rating/';
+import { RenderIcon } from './render/';
 import './styles';
 
 class Widget extends React.Component {
