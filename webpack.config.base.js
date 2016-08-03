@@ -10,7 +10,8 @@ module.exports = {
   },
   output: {
     library: 'UIElements',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    publicPath: '/ui-rating/'
   },
   resolve: {
     root: path.resolve(__dirname, './src'),

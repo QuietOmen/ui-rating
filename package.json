@@ -5,13 +5,14 @@
   "main": "./dist/ui.rating.js",
   "scripts": {
     "build:examples": "babel-node --presets es2015 examples/build.js",
+    "build:gh-pages": "babel-node --presets es2015 examples/ghPages.js",
     "build:umd": "webpack src/index.js dist/ui.rating.js --config webpack.config.development.js",
     "build:umd:min": "webpack src/index.js dist/ui.rating.min.js --config webpack.config.production.js",
     "watch": "npm run build:umd -- --watch",
     "build": "npm run build:umd && npm run build:umd:min",
     "check": "npm run lint && npm run test",
     "clean": "rimraf lib dist coverage",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build:gh-pages; gh-pages -d gh-pages",
     "lint": "eslint src test examples",
     "preversion": "npm run clean && npm run check",
     "postversion": "git push && git push --tags && npm run clean",
@@ -64,6 +65,7 @@
     "gh-pages": "^0.11.0",
     "isparta": "^4.0.0",
     "mocha": "^2.3.4",
+    "ncp": "^2.0.0",
     "node-libs-browser": "^1.0.0",
     "node-sass": "^3.4.2",
     "postcss-loader": "^0.9.1",
@@ -84,5 +86,8 @@
         "*.js"
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "tra": "^0.30.0"
+  }
 }
