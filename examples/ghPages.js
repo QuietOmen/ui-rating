@@ -2,6 +2,8 @@
  * Runs an ordered set of commands within each of the build directories.
  */
 import ncp from 'ncp';
+ncp.limit = 16;
+import mkdirp from 'mkdirp';
 import fs from 'fs';
 import path from 'path';
 import { spawnSync } from 'child_process';
@@ -11,36 +13,26 @@ var exampleDirs = fs.readdirSync(__dirname).filter((file) => {
 });
 
 // Ordering is important here. `npm install` must come first.
-var cmdArgs = [
-  { cmd: 'cp', args: ['./index.js']}
-];
+var files = ['bundle.js'];
 
 for (let dir of exampleDirs) {
-  for (let cmdArg of cmdArgs) {
-    ncp.limit = 16;
-    ncp.clobber = true;
-    ncp(`./examples/${dir}/index.js`, `./gh-pages/${dir}/index.js`, function (err) {
+  for (let file of files) {
+    ncp(`./examples/${dir}/build/${file}`, `./gh-pages/${dir}-${file}`, {clobber: true}, function (err) {
      if (err) {
        return console.error(err);
      }
-     console.log('done!');
+     console.log('GH-Pages: File Copied!');
     });
-
-
-
-    // // declare opts in this scope to avoid https://github.com/joyent/node/issues/9158
-    // let opts = {
-    //   cwd: path.join(__dirname, dir),
-    //   stdio: 'inherit'
-    // };
-    // let result = {};
-    // if (process.platform === 'win32') {
-    //   result = spawnSync(cmdArg.cmd + '.cmd', cmdArg.args, opts);
-    // } else {
-    //   result = spawnSync(cmdArg.cmd, cmdArg.args, opts);
-    // }
-    // if (result.status !== 0) {
-    //   throw new Error('Building examples exited with non-zero');
-    // }
   }
 }
+
+// <script src="ui-rating.min.js"></script>
+// <div id="rating-root"></div>
+// <script src="rating/index.js"></script>
+
+ncp('./dist/ui.rating.js', './gh-pages/ui.rating.js', {clobber: true}, function (err) {
+ if (err) {
+   return console.error(err);
+ }
+ console.log('GH-Pages: Library Copied!');
+});
