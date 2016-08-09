@@ -19,7 +19,10 @@
     "test:examples": "babel-node examples/tests.js",
     "test:watch": "npm test -- --watch",
     "test:cov": "babel-node $(npm bin)/isparta cover $(npm bin)/_mocha -- --recursive",
-    "version": "npm run build"
+    "version": "npm run build",
+    "docs:clean": "rimraf gh-pages",
+    "docs:prepare": "babel-node --presets es2015 examples/ghPages.js",
+    "docs:publish": "npm run docs:prepare; gh-pages -d gh-pages"
   },
   "repository": {
     "type": "git",
@@ -60,8 +63,11 @@
     "expect": "^1.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "gh-pages": "^0.11.0",
     "isparta": "^4.0.0",
+    "mkdirp": "^0.5.1",
     "mocha": "^2.3.4",
+    "ncp": "^2.0.0",
     "node-libs-browser": "^1.0.0",
     "node-sass": "^3.4.2",
     "postcss-loader": "^0.9.1",

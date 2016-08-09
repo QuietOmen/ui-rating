@@ -41,7 +41,6 @@ var config = {
   },
   plugins: [
     new Webpack.HotModuleReplacementPlugin(),
-    new Webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
   ]
 };
 
